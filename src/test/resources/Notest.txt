@@ -160,3 +160,6 @@ c) custom predicate
         listObj.stream().flatMap(i -> i.entrySet().stream()).forEach(k -> System.out.println(k.getKey() + " : " + k.getValue()));
 
 
+https://github.com/json-path/JsonPath/blob/master/json-path/src/test/java/com/jayway/jsonpath/WriteTest.java  -- good one to refer
+
+
