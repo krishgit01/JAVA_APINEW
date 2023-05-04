@@ -1,0 +1,162 @@
+//        The following error message will be displayed without any of the library
+//        Exception in thread "main" java.lang.IllegalStateException: Cannot serialize object because no JSON serializer found in classpath.
+//        Please put Jackson (Databind), Gson, Johnzon, or Yasson in the classpath.
+
+https://github.com/json-path/JsonPath  -- good reference
+
+Pojo:
+====
+do not extend any other class
+do not implement any interface
+do not have external annotations
+
+example of pojo
+==============
+public class Cat{
+int age ;
+String name;
+}
+
+To be a bean it should be :
+should have
+  1) No arg constructor
+  2) properties must be private
+  3) public getters and setters
+  4) must be serializable
+
+
+ how to make above pojo to java bean
+
+ public class Cat implements Serializable{
+
+ private int age;
+ private String name;
+
+ add getters and setters
+ by default there is no arg constructor
+ }
+now its java bean
+
+
+Serilization : POJO to JSON
+//ObjectMapper from jackson library
+ObjectMapper mapper = new ObjectMapper();
+String jsonBody = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(student1);
+System.out.println("jsonBody : " + jsonBody);
+
+
+Jsonpath evalutor:
+=================
+https://www.site24x7.com/tools/json-path-evaluator.html - good one
+https://jsonpathfinder.com/
+https://www.javainuse.com/jsonpath
+https://jsonpath.com/
+https://jsoneditoronline.org/
+https://www.atatus.com/tools/json-path-evaluator
+
+with explanation is good
+https://support.smartbear.com/alertsite/docs/monitors/api/endpoint/jsonpath.html
+
+Terminology
+============
+Notation
+Expression
+predicate
+Filter(operators)
+Dictionary {} curly braces
+List [] square braces
+
+========
+Filter
+
+[1,2,3,4,5,6,7,8,9,10]
+$.[?(@>2)]  -> print all elements greater than 2
+
+$.[?(@ in [3,10])] -> prints 3 and 10 if present
+$.[?(@ nin [2,4])] -> nin (not in) prints all numbers except 2 and 4
+
+
+$..book[?(@.category == 'fiction'  && ( @.author == 'Herman Melville' ||  @.author == 'J.R.R. Tolkien'))]
+$..book[?(@.category == 'fiction'  && ( @.author == 'Herman Melville' ||  @.author == 'J.R.R. Tolkien'))].category
+$..book[?(@.category == 'fiction'  && ( @.author == 'Herman Melville' ||  @.author == 'J.R.R. Tolkien'))].[?(@.price < 10)]
+$..book[?(@.category == 'fiction'  && ( @.author == 'Herman Melville' ||  @.author == 'J.R.R. Tolkien'))].[?(@.price < 10)].test[0]
+
+regular expression : ~/.*/
+$..book[?(@.category =~/.*ence/)]- working one
+$..book[?(@.category =~/.*ENCE/i)] - case insentivity brings the result
+
+{
+  "store": {
+    "book": [
+      {
+        "category": "reference",
+        "author": "Nigel Rees",
+        "title": "Sayings of the Century",
+        "price": 8.95
+      },
+      {
+        "category": "fiction",
+        "author": "Herman Melville",
+        "title": "Moby Dick",
+        "isbn": "0-553-21311-3",
+        "test" : [1,2,3,4],
+        "price": 8.99
+      },
+      {
+        "category": "fiction",
+        "author": "J.R.R. Tolkien",
+        "title": "The Lord of the Rings",
+        "isbn": "0-395-19395-8",
+        "price": 22.99
+      }
+    ],
+    "bicycle": {
+      "color": "red",
+      "price": 19.95
+    }
+  },
+  "expensive": 10
+}
+
+JsonPath read
+=============
+Configuration configuration = Configuration.defaultConfiguration();
+DocumentContext documentContext = JsonPath.using(configuration).parse(jsonStr);
+List<Object> authorList = documentContext.read("$..author");
+
+Predicate :
+a) InLine Predicate
+  ex:  List<Object> objList = documentContext.read("$..book[?(@.price<10)]");
+
+b) Filter Predicate
+  ex :
+        //static import of Filter and Criteria class
+        public void filterprerd_3() throws IOException {
+            String jsonStr = ReadFileFIS.readFile("src/test/resources/payload/book.json");
+                Filter filter3 =  filter(where("category")
+                                          .is("fiction"));
+             Configuration configuration = Configuration.defaultConfiguration();
+             DocumentContext documentContext = JsonPath.using(configuration).parse(jsonStr);
+             List<Map<String,?>> listObj = documentContext.read("$..book[?]", filter3);
+            System.out.println("****** category is fiction");
+             listObj.stream().forEach(System.out::println);
+
+
+
+c) custom predicate
+        Predicate custPredicate1 = new Predicate() {
+            @Override
+            public boolean apply(PredicateContext ctx) {
+                boolean res = ctx.item(Map.class).containsKey("isbn");
+                return res;
+            }
+        };
+
+        Configuration configuration = Configuration.defaultConfiguration();
+        DocumentContext documentContext = JsonPath.using(configuration).parse(jsonStr);
+        System.out.println("******* using lambda expression ");
+        List<Map<String, ?>> listObj = documentContext.read("$..book[?]", List.class, ctx -> ctx.item(Map.class).containsKey("isbn"));
+        listObj.forEach(System.out::println);
+        listObj.stream().flatMap(i -> i.entrySet().stream()).forEach(k -> System.out.println(k.getKey() + " : " + k.getValue()));
+
+

@@ -1,0 +1,10 @@
+{
+  "firstName": "test2",
+  "lastName": "user2",
+  "email": "testuser2@testdomain.com",
+  "programme": "Financial Analysis",
+  "courses": [
+    "Accounting",
+    "Statistics"
+  ]
+}
