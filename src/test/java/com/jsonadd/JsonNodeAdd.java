@@ -7,7 +7,9 @@ import com.jayway.jsonpath.JsonPath;
 import com.jayway.jsonpath.spi.mapper.JacksonMappingProvider;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class JsonNodeAdd {
@@ -31,12 +33,24 @@ public class JsonNodeAdd {
 
         Configuration configuration = Configuration.builder().mappingProvider(new JacksonMappingProvider()).build();
         /******* adding to array element *****/
+        System.out.println("Adding to array elements .....");
         DocumentContext context = JsonPath.using(configuration).parse(jsonStr).add("store.book", addNode);
-        System.out.println(context.jsonString());
+        jsonStr =context.jsonString();
+        System.out.println(jsonStr);
 
         /******* adding to root level element *****/
         System.out.println("Adding to root level element .....");
-        System.out.println(JsonPath.using(configuration).parse(jsonStr).put("$","test","This is testing").jsonString());
+        jsonStr =JsonPath.using(configuration).parse(jsonStr).put("$","test","This is testing").jsonString();
+        System.out.println(jsonStr);
+
+        /*********** adding new Array ************/
+        List<String> arrayList= new ArrayList<>();
+        arrayList.add("apple");
+        arrayList.add("orange");
+        System.out.println("Adding to new array element .....");
+        jsonStr =JsonPath.using(configuration).parse(jsonStr).put("$.store","fruits", arrayList).jsonString();
+        System.out.println(jsonStr);
+
 
         /******* deleting all arrays *****/
         System.out.println("deleting all array elements .....");
