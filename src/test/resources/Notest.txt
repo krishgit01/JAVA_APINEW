@@ -162,4 +162,22 @@ c) custom predicate
 
 https://github.com/json-path/JsonPath/blob/master/json-path/src/test/java/com/jayway/jsonpath/WriteTest.java  -- good one to refer
 
+https://javacrafters.com/simpledateformat-vs-datetimeformatter-in-java/  - simpledateformat-vs-datetimeformatter good one
+// declarationDataSubmit(declarationBaseDataMap, restAPIData ,bvtTestDataPath);
+// System.out.println(TimeZone.getDefault());
+// TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
+// System.out.println(TimeZone.getDefault());
+// Calendar cal = Calendar.getInstance(); //TimeZone.getTimeZone("UTC")
+// cal.set(Calendar.SECOND, 0);
+// cal.set(Calendar.MILLISECOND, 0);
+// Date date = cal.getTime();
+// System.out.println("date value is : " + date );
+// String pattern = STVariables.pnTimeFormat;
+// SimpleDateFormat format1 = new SimpleDateFormat(pattern);
+// String newDate = format1.format(date);
+// System.out.println("newDate value is : " + newDate);
+// LocalDateTime now = OffsetDateTime.parse(newDate).toLocalDateTime();
+// System.out.println("now value is : " +now);
 
+OffsetDateTime offsetDateTime = new Date().toInstant().atOffset(ZoneOffset.UTC);
+System.out.println("offsetDateTime value is : " + offsetDateTime);
