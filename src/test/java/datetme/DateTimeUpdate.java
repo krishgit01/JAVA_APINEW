@@ -16,7 +16,7 @@ public class DateTimeUpdate {
         String dateFormatStr = "dd-MM-yyyy'T'HH:mm:ss.SSS'Z'";
         List<Long> timeDiffPN = new ArrayList<>();
         String jsonStr = ReadFileFIS.readFile("src/test/resources/datetimejson/Smoke001.json");
-        List<Map<String, String>> pnFromTime = (List<Map<String, String>>) test1(jsonStr, "$.values[?(@.parameter=='PN')].time");
+        List<Map<String, String>> pnFromTime = (List<Map<String, String>>) readNodeValueFromJson(jsonStr, "$.values[?(@.parameter=='PN')].time");
         System.out.println(pnFromTime);
         pnFromTime.stream().forEach(k -> k.entrySet().stream().forEach(m1 -> System.out.println(m1.getKey() + " : " + m1.getValue())));
         DateTimeFormatter df = DateTimeFormatter.ofPattern(dateFormatStr, Locale.US);
@@ -46,22 +46,34 @@ public class DateTimeUpdate {
 
         }
         System.out.println("timeDiffPN value is : " + timeDiffPN);
-        List<String> pnFromT = (List<String>) test1(jsonStr, "$.values[?(@.parameter=='PN')].time.from");
+        List<String> pnFromT = (List<String>) readNodeValueFromJson(jsonStr, "$.values[?(@.parameter=='PN')].time.from");
         System.out.println("pnFromT value is : " + pnFromT);
 
-        for (int i = 0; i < pnFromT.size(); i++) {
+        for (int i = 0; i < 1; i++) {
             Object parsedJsonDoc = Configuration.defaultConfiguration().jsonProvider().parse(jsonStr);
             String criteria = "$.values[?(@.parameter=='PN' && @.time.from=='" + pnFromT.get(i) + "')].time.from";
             //                 $.values[?(@.parameter=='PN' && @.time.from=='"+pnFromT.get(i) + "')].time.from  //working one
+//            jsonStr = JsonPath.parse(parsedJsonDoc)
+//                    .set(criteria, LocalDateTime.now().plusMinutes(i + 1).format(df)).jsonString();
+//            System.out.println("jsonStr value is :" + jsonStr);
+
+            //updatingMap multiple values from map
+            Map<String,String> updateValuMap = new HashMap<>(){{
+               put("from"," 07-05-2023T17:26:03.244Z");
+               put("to","07-05-2023T18:26:03.244Z");
+            }};
+            String criteria1 = "$.values[?(@.parameter=='PN' && @.time.from=='" + pnFromT.get(i) + "')].time";
             jsonStr = JsonPath.parse(parsedJsonDoc)
-                    .set(criteria, LocalDateTime.now().plusMinutes(i + 1).format(df)).jsonString();
+                    .set(criteria1, updateValuMap).jsonString();
             System.out.println("jsonStr value is :" + jsonStr);
+
+
         }
         System.out.println(jsonStr);
 
     }
 
-    public static Object test1(String jsonBody, String jsonPath) throws IOException {
+    public static Object readNodeValueFromJson(String jsonBody, String jsonPath) throws IOException {
         Object parsedJsonDoc = Configuration.defaultConfiguration().jsonProvider().parse(jsonBody);
         Object tempList = JsonPath.read(parsedJsonDoc, jsonPath);
         return tempList;

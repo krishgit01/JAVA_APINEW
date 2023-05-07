@@ -23,12 +23,6 @@ public class JsonNodeAdd {
         Map<String,Object> addToParent = new HashMap<>();
         addToParent.put("test","This is testing");
 
-//        {
-//            "category": "reference",
-//                "author": "Nigel Rees",
-//                "title": "Sayings of the Century",
-//                "price": 8.95
-//        }
         String jsonStr = ReadFileFIS.readFile("src/test/resources/payload/book.json");
 
         Configuration configuration = Configuration.builder().mappingProvider(new JacksonMappingProvider()).build();
