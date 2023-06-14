@@ -1,8 +1,7 @@
 package datetme;
 
 import java.text.SimpleDateFormat;
-import java.time.ZoneId;
-import java.time.ZoneOffset;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
@@ -32,6 +31,13 @@ public class TimeZoneUTCEx {
         System.out.println("formatedUTCDateSimpleDateFormat value is : " + formatedUTCDateSimpleDateFormat);
 
 
+        /******************* OffsetDateTime examples ********************/
+        System.out.println("*************** OffsetDateTime examples ***************");
+        OffsetDateTime offsetDateTimeUTC = OffsetDateTime.of(LocalDate.now(), LocalTime.now(),ZoneOffset.UTC);
+        System.out.println("offsetDateTimeUTC value is : " + offsetDateTimeUTC.format(df));
+
+        OffsetDateTime offsetDateTimeCustom = OffsetDateTime.of(LocalDate.now(), LocalTime.of(23,59,00),ZoneOffset.UTC);
+        System.out.println("offsetDateTimeCustom value is : " + offsetDateTimeCustom.format(df));
 
     }
 }

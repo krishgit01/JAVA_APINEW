@@ -28,7 +28,7 @@ public class JsonNodeAdd {
         Configuration configuration = Configuration.builder().mappingProvider(new JacksonMappingProvider()).build();
         /******* adding to array element *****/
         System.out.println("Adding to array elements .....");
-        DocumentContext context = JsonPath.using(configuration).parse(jsonStr).add("store.book", addNode);
+        DocumentContext context = JsonPath.using(configuration).parse(jsonStr).set("store.book[0]", addNode);
         jsonStr =context.jsonString();
         System.out.println(jsonStr);
 

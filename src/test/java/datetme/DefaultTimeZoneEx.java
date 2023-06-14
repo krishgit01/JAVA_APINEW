@@ -32,9 +32,8 @@ public class DefaultTimeZoneEx {
         //the below is for UTC
         System.out.println("atZone(ZoneId.of(ZoneOffset.systemDefault().getId()))  : atZone(ZoneId.of(ZoneOffset.UTC.getId())) ");
         String foramatedOutputSysDefault = date1.toInstant().atZone(ZoneId.of(ZoneOffset.systemDefault().getId())).toLocalDateTime().format(df);
-        String foramatedOutputUTC = date1.toInstant().atZone(ZoneId.of(ZoneOffset.UTC.getId())).toLocalDateTime().format(df);
+        String foramatedOutputUTC        = date1.toInstant().atZone(ZoneId.of(ZoneOffset.UTC.getId())).toLocalDateTime().format(df);
         System.out.println("foramatedOutputSysDefault value is : " + foramatedOutputSysDefault);
         System.out.println("foramatedOutputUTC value is :        " + foramatedOutputUTC);
-
     }
 }
