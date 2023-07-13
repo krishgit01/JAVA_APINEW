@@ -32,6 +32,8 @@ public class DeserializeJayWay {
         TypeRef<List<Book1>> typeRef = new TypeRef<List<Book1>>() {};
 
         Configuration configuration = Configuration.builder().mappingProvider(new JacksonMappingProvider()).build();
+//        Configuration configuration = Configuration.defaultConfiguration(); // this is will error message
+//         Json-smart provider does not support TypeRef! Use a Jackson or Gson based provider
         DocumentContext documentContext = JsonPath.using(configuration).parse(jsonStr);
         List<Book1> book1List =  documentContext.read("$.store.book", typeRef);
         book1List.stream().forEach(System.out::println);
