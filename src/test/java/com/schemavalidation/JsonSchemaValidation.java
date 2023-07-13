@@ -3,11 +3,15 @@ package com.schemavalidation;
 import io.restassured.RestAssured;
 import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.response.Response;
+import org.apache.commons.io.Charsets;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.hamcrest.MatcherAssert;
 import org.testng.annotations.Test;
 
 import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 import static io.restassured.RestAssured.given;
 
@@ -92,8 +96,8 @@ public class JsonSchemaValidation {
 
     @Test
     public void jsonSchemaValidationString2() throws IOException {
-        Reader reader =  new FileReader("src/test/resources/jsonschema.json");
-        String schemaStr = IOUtils.toString(reader)  ;
+        Reader reader = new FileReader("src/test/resources/jsonschema.json");
+        String schemaStr = IOUtils.toString(reader);
 
         System.out.println("schemaStr value is :" + schemaStr);
 
@@ -111,7 +115,10 @@ public class JsonSchemaValidation {
     public void jsonSchemaUsingHamcrestMatcher() throws IOException {
         Reader reader = new FileReader("src/test/resources/jsonschema.json");
         String schemaStr = IOUtils.toString(reader);
-
+        String schema1 = FileUtils.readFileToString(new File("src/test/resources/jsonschema.json"), "UTF-8");
+        String schema2 = FileUtils.readFileToString(new File("src/test/resources/jsonschema.json"), StandardCharsets.UTF_8);
+        System.out.println("schema1 value is : " + schema1);
+        System.out.println("schema2 value is : " + schema2);
         Response response = given()
                 .baseUri("http://localhost:8085")
                 .when()
@@ -121,7 +128,7 @@ public class JsonSchemaValidation {
         System.out.println("respBody value is : " + respBody);
 
         //using hamcrest matcher for schema validation
-        MatcherAssert.assertThat(respBody,JsonSchemaValidator.matchesJsonSchema(schemaStr));
+        MatcherAssert.assertThat(respBody, JsonSchemaValidator.matchesJsonSchema(schemaStr));
 
     }
 
