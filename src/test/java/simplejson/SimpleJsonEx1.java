@@ -13,6 +13,7 @@ public class SimpleJsonEx1 {
         JSONObject tempJsonObject =   jsonObject.getJSONObject("store").getJSONArray("book").getJSONObject(0);
         tempJsonObject.put("category","This is testing category");
         System.out.println(jsonObject.toString());
+
     }
 }
 

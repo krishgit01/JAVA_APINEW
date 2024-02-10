@@ -23,5 +23,8 @@ public class DateTimeEx1 {
         long timediff = ChronoUnit.MINUTES.between(localDateTime1, localDateTime2);
         System.out.println("timediff value is : " +timediff);
 
+        long timediff1 = ChronoUnit.MINUTES.between(localDateTime2, localDateTime1);
+        System.out.println("timediff1 value is : " +timediff1);
+
     }
 }

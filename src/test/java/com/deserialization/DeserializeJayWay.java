@@ -2,6 +2,8 @@ package com.deserialization;
 
 import com.commonfunction.ReadFileFIS;
 import com.jayway.jsonpath.*;
+import com.jayway.jsonpath.spi.json.JacksonJsonNodeJsonProvider;
+import com.jayway.jsonpath.spi.json.JacksonJsonProvider;
 import com.jayway.jsonpath.spi.mapper.JacksonMappingProvider;
 
 import java.io.IOException;
