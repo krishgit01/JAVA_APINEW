@@ -9,7 +9,7 @@ import java.util.TimeZone;
 
 public class TimeZoneUTCEx {
     public static void main(String[] args) {
-        String dateFormatStr = "dd-MM-yyyy'T'HH:mm:ss.SSS'Z'";
+        String dateFormatStr = "dd-MM-yyyy'T'HH:mm:ss.SSSSSS'Z'";
         DateTimeFormatter df = DateTimeFormatter.ofPattern(dateFormatStr);
         TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
         Calendar cal1 = Calendar.getInstance();
