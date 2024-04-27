@@ -13,6 +13,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+//Reference : http://makeseleniumeasy.com/2021/05/19/rest-assured-tutorial-73-how-to-ignore-node-s-for-json-comparison-in-jsonassert/
+
 public class CustomComparatorEx {
 
     static String   jsonFile1 = "src/test/resources/customcomparisonfiles/Book1.json";
