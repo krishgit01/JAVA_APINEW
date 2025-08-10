@@ -182,6 +182,15 @@ public final class JsonUtilsChat2 {
                         .map(path -> new Customization(path, (o1, o2) -> true))
                         .toArray(Customization[]::new));
     }
+//Path exists
+    public static boolean pathExists(String json, String path) {
+        try {
+            read(json, path, Object.class);
+            return true;
+        } catch (PathNotFoundException e) {
+            return false;
+        }
+    }
 
     // ========================
     // 🔹 VALIDATION
