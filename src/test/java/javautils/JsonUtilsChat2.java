@@ -185,7 +185,7 @@ public final class JsonUtilsChat2 {
 //Path exists
     public static boolean pathExists(String json, String path) {
         try {
-            read(json, path, Object.class);
+            JsonPath.using(JSONPATH_CONFIG).parse(json).read(path);
             return true;
         } catch (PathNotFoundException e) {
             return false;
