@@ -12,6 +12,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 //Reference : http://makeseleniumeasy.com/2021/05/19/rest-assured-tutorial-73-how-to-ignore-node-s-for-json-comparison-in-jsonassert/
 
@@ -59,6 +62,22 @@ public class CustomComparatorEx {
                 e.printStackTrace();
             }
             return sFileContents;
+        }
+    }
+    //Inputstream in try will autoclose
+    public static String readFileContents1(String fileName) {
+        try (InputStream fis = new FileInputStream(fileName)) {
+            return IOUtils.toString(fis, StandardCharsets.UTF_8);
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to read file: " + fileName, e);
+        }
+    }
+    //from java 11
+    public static String readFileContents2(String fileName) {
+        try {
+            return Files.readString(Paths.get(fileName));
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to read file: " + fileName, e);
         }
     }
 }
