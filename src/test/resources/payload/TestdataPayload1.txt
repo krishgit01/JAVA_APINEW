@@ -1,0 +1,4 @@
+| Testcaseid | Teststeps | pathparmam | queryparam |
+| TC001      | ST001     | data1      | qu01       |
+|            | ST002     | data2      | qu02       |
+|            | ST003     | data3      | qu03       |

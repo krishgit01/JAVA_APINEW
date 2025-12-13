@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+    <config type="env" name="local">
+        <hostname>http://localhost:8080</hostname>
+        <onpremapi>http://localhost:8080</onpremapi>
+        <bagapi>http://localhost:8080</bagapi>
+        <creatbag></creatbag>>
+        <endpoints>
+            <helloWorldUrl>http://localhost:8080</helloWorldUrl>
+        </endpoints>
+    </config>
+    <config type="env" name="qa">
+        <hostname>https://qa.localhost.com/</hostname>
+        <soapAPI>https://qa.localhost.com/</soapAPI>
+        <endpoints>
+            <helloWorldUrl>https://qa.localhost.com/</helloWorldUrl>
+        </endpoints>
+    </config>
+</document>

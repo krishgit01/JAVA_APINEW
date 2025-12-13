@@ -1,0 +1,48 @@
+{
+        "zoneId": "Smoke_Zone",
+        "targetPoints": [{
+            "targetValue": 200,
+            "timePoint": "2023-05-05T08:00:00Z",
+            "changeOperation": "CREATE"
+        },
+        {
+            "targetValue": 200,
+            "timePoint": "2023-05-05T08:06:00Z",
+            "changeOperation": "CREATE"
+        },
+        {
+            "targetValue": 220,
+            "timePoint": "2023-05-05T08:11:00Z",
+            "changeOperation": "CREATE"
+        },
+        {
+            "targetValue": 220,
+            "timePoint": "2023-05-05T08:15:00Z",
+            "changeOperation": "CREATE"
+        },
+        {
+            "targetValue": 300,
+            "timePoint": "2023-05-05T08:23:00Z",
+            "changeOperation": "CREATE"
+        },
+        {
+            "targetValue": 300,
+            "timePoint": "2023-05-05T08:28:00Z",
+            "changeOperation": "CREATE"
+        },
+        {
+            "targetValue": 240,
+            "timePoint": "2023-05-05T08:34:00Z",
+            "changeOperation": "CREATE"
+        },
+        {
+            "targetValue": 240,
+            "timePoint": "2023-05-05T08:39:00Z",
+            "changeOperation": "CREATE"
+        },
+        {
+            "targetValue": 200,
+            "timePoint": "2023-05-05T08:44:00Z",
+            "changeOperation": "CREATE"
+        }]
+}

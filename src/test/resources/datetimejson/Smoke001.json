@@ -1,0 +1,250 @@
+{
+        "unitRegId": "Smoke001",
+        "serviceId": "1",
+        "contractId": "C001",
+        "tradingAgentId": "ABC",
+        "source": "EDT",
+        "messageType": "declaration",
+        "notificationTime": "2023-05-05T06:00:00.000Z",
+        "values": [{
+            "sourceRef": "T11001",
+            "parameterType": "TIME",
+            "parameter": "PN",
+            "level": {
+                "from": "50",
+                "to": "50"
+            },
+            "time": {
+                "from": "2023-05-05T08:00:00.000Z",
+                "to": "2023-05-05T08:30:00.000Z"
+            }
+        },
+        {
+            "sourceRef": "T11002",
+            "parameterType": "TIME",
+            "parameter": "PN",
+            "level": {
+                "from": "50",
+                "to": "50"
+            },
+            "time": {
+                "from": "2023-05-05T08:30:00.000Z",
+                "to": "2023-05-05T09:00:00.000Z"
+            }
+        },
+        {
+            "sourceRef": "T11003",
+            "parameterType": "TIME",
+            "parameter": "PN",
+            "level": {
+                "from": "50",
+                "to": "50"
+            },
+            "time": {
+                "from": "2023-05-05T09:00:00.000Z",
+                "to": "2023-05-05T09:01:00.000Z"
+            }
+        },
+        {
+            "sourceRef": "T11004",
+            "parameterType": "TIME",
+            "parameter": "PN",
+            "level": {
+                "from": "50",
+                "to": "50"
+            },
+            "time": {
+                "from": "2023-05-05T09:01:00.000Z",
+                "to": "2023-05-05T09:02:00.000Z"
+            }
+        },
+        {
+            "sourceRef": "T11005",
+            "parameterType": "TIME",
+            "parameter": "PN",
+            "level": {
+                "from": "50",
+                "to": "50"
+            },
+            "time": {
+                "from": "2023-05-05T09:02:00.000Z",
+                "to": "2023-05-05T09:03:00.000Z"
+            }
+        },
+        {
+            "sourceRef": "T11006",
+            "parameterType": "TIME",
+            "parameter": "PN",
+            "level": {
+                "from": "50",
+                "to": "50"
+            },
+            "time": {
+                "from": "2023-05-05T09:03:00.000Z",
+                "to": "2023-05-05T09:04:00.000Z"
+            }
+        },
+        {
+            "sourceRef": "T11007",
+            "parameterType": "TIME",
+            "parameter": "PN",
+            "level": {
+                "from": "50",
+                "to": "50"
+            },
+            "time": {
+                "from": "2023-05-05T09:04:00.000Z",
+                "to": "2023-05-05T09:05:00.000Z"
+            }
+        },
+        {
+            "sourceRef": "T11008",
+            "parameterType": "TIME",
+            "parameter": "PN",
+            "level": {
+                "from": "50",
+                "to": "50"
+            },
+            "time": {
+                "from": "2023-05-05T09:05:00.000Z",
+                "to": "2023-05-05T09:30:00.000Z"
+            }
+        },
+        {
+            "sourceRef": "T11009",
+            "parameterType": "TIME",
+            "parameter": "PN",
+            "level": {
+                "from": "50",
+                "to": "50"
+            },
+            "time": {
+                "from": "2023-05-05T09:30:00.000Z",
+                "to": "2023-05-05T10:00:00.000Z"
+            }
+        },
+        {
+            "sourceRef": "T11010",
+            "parameterType": "TIME",
+            "parameter": "PN",
+            "level": {
+                "from": "50",
+                "to": "50"
+            },
+            "time": {
+                "from": "2023-05-05T10:00:00.000Z",
+                "to": "2023-05-05T10:30:00.000Z"
+            }
+        },
+        {
+            "sourceRef": "T11011",
+            "parameterType": "TIME",
+            "parameter": "MEL",
+            "level": {
+                "from": "100",
+                "to": "100"
+            },
+            "time": {
+                "from": "2023-05-05T08:00:00.000Z",
+                "to": "2023-05-05T08:30:00.000Z"
+            }
+        },
+        {
+            "sourceRef": "T11012",
+            "parameterType": "TIME",
+            "parameter": "MEL",
+            "level": {
+                "from": "100",
+                "to": "100"
+            },
+            "time": {
+                "from": "2023-05-05T08:30:00.000Z",
+                "to": "2023-05-05T09:00:00.000Z"
+            }
+        },
+        {
+            "sourceRef": "T11013",
+            "parameterType": "TIME",
+            "parameter": "MEL",
+            "level": {
+                "from": "100",
+                "to": "100"
+            },
+            "time": {
+                "from": "2023-05-05T09:00:00.000Z",
+                "to": "2023-05-05T09:30:00.000Z"
+            }
+        },
+        {
+            "sourceRef": "T11014",
+            "parameterType": "TIME",
+            "parameter": "MEL",
+            "level": {
+                "from": "100",
+                "to": "100"
+            },
+            "time": {
+                "from": "2023-05-05T09:30:00.000Z",
+                "to": "2023-05-05T10:00:00.000Z"
+            }
+        },
+        {
+            "sourceRef": "T11015",
+            "parameterType": "TIME",
+            "parameter": "MEL",
+            "level": {
+                "from": "100",
+                "to": "100"
+            },
+            "time": {
+                "from": "2023-05-05T10:00:00.000Z",
+                "to": "2023-05-05T10:30:00.000Z"
+            }
+        },
+        {
+            "sourceRef": "P33001",
+            "parameterType": "POWER",
+            "parameter": "RURE",
+            "breakpoint": 0,
+            "rate": "10",
+            "sequence": 1
+        },
+        {
+            "sourceRef": "P33002",
+            "parameterType": "POWER",
+            "parameter": "RDRE",
+            "breakpoint": 10000,
+            "rate": "10",
+            "sequence": 1
+        },
+        {
+            "sourceRef": "S44001",
+            "parameterType": "SINGLE",
+            "parameter": "NTO",
+            "value": 0
+        },
+        {
+            "sourceRef": "S44002",
+            "parameterType": "SINGLE",
+            "parameter": "NTB",
+            "value": 0
+        },
+        {
+            "sourceRef": "S44003",
+            "parameterType": "SINGLE",
+            "parameter": "SEL",
+            "value": 30
+        },
+        {
+            "sourceRef": "S44004",
+            "parameterType": "SINGLE",
+            "parameter": "MZT",
+            "value": 0
+        },
+        {
+            "sourceRef": "S44005",
+            "parameterType": "SINGLE",
+            "parameter": "MNZT",
+            "value": 0
+        }]
+}

@@ -58,7 +58,19 @@ public final class JsonUtilsChat2 {
         }
     }
 
+    public static <T> Optional<T> read(String jsonBody, String path, TypeRef<T> type) {
+        try {
+            return Optional.ofNullable(JsonPath.using(JSONPATH_CONFIG).parse(jsonBody).read(path, type));
+        } catch (Exception e) {
+            return Optional.empty();
+        }
+    }
+
     public static <T> T readOrDefault(String json, String path, Class<T> type, T defaultValue) {
+        return read(json, path, type).orElse(defaultValue);
+    }
+
+    public static <T> T readOrDefault(String json, String path, TypeRef<T> type, T defaultValue) {
         return read(json, path, type).orElse(defaultValue);
     }
 
@@ -66,13 +78,10 @@ public final class JsonUtilsChat2 {
     // 🔹 REST ASSURED SUPPORT
     // ========================
 
-    public static <T> Optional<T> read(Response response, String path, Class<T> type) {
-        return read(response.asString(), path, type);
-    }
 
-    public static <T> T readOrDefault(Response response, String path, Class<T> type, T defaultValue) {
-        return readOrDefault(response.asString(), path, type, defaultValue);
-    }
+//    public static <T> T readOrDefault(Response response, String path, Class<T> type, T defaultValue) {
+//        return readOrDefault(response.asString(), path, type, defaultValue);
+//    }
 
     public static boolean isValid(Response response) {
         return isValid(response.asString());
@@ -182,7 +191,8 @@ public final class JsonUtilsChat2 {
                         .map(path -> new Customization(path, (o1, o2) -> true))
                         .toArray(Customization[]::new));
     }
-//Path exists
+
+    //Path exists
     public static boolean pathExists(String json, String path) {
         try {
             JsonPath.using(JSONPATH_CONFIG).parse(json).read(path);

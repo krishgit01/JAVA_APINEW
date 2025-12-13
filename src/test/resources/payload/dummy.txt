@@ -1,0 +1,9 @@
+| testCaseId | stepid | stepName       | functionName       | restcall | queryparam | pathparam  | param1 | param2    | param3 | expectedStatus |
+| TC001      | step01 | login          | loginStep          | get      | student=1  | student/v1 | user1  | password1 |        | 200            |
+|            | step02 | createUser     | createUserStep     | post     |            | student/v1 | token1 | John      |        | 201            |
+|            | step03 | getUserDetails | getUserDetailsStep | get      |            | student/v1 | token1 | userId1   |        | 200            |
+| TC002      | step01 | login          | loginStep          | post     |            | student/v1 | user2  | password2 |        | 200            |
+|            | step02 | createUser     | createUserStep     | put      |            | student/v1 | token2 | Doe       |        | 201            |
+| TC001      | step01 | login          | loginStep          | get      | student=10 | student/v1 | user1  | password2 |        | 200            |
+|            | step02 | createUser     | createUserStep     | post     |            | student/v1 | token1 | Johntest  |        | 201            |
+|            | step02 | getUserDetails | getUserDetailsStep | get      |            | student/v1 | token1 | userId15  |        | 200            |
