@@ -1,0 +1,56 @@
+Basic Character Classes
+// Literal characters
+Pattern.compile("cat")        // Matches: "cat"
+
+// Any single character (except newline)
+Pattern.compile("c.t")        // Matches: "cat", "cut", "c9t"
+
+// Character set
+Pattern.compile("[aeiou]")    // Matches: any vowel
+Pattern.compile("[0-9]")      // Matches: any digit
+Pattern.compile("[a-z]")      // Matches: any lowercase letter
+Pattern.compile("[a-zA-Z]")   // Matches: any letter
+
+// Negated character set
+Pattern.compile("[^0-9]")     // Matches: any non-digit
+Pattern.compile("[^aeiou]")   // Matches: any non-vowel
+
+Predefined Character Classes
+Pattern.compile("\\d")   // Digit: [0-9]
+Pattern.compile("\\D")   // Non-digit: [^0-9]
+Pattern.compile("\\s")   // Whitespace: [ \t\n\r\f]
+Pattern.compile("\\S")   // Non-whitespace
+Pattern.compile("\\w")   // Word character: [a-zA-Z0-9_]
+Pattern.compile("\\W")   // Non-word character
+
+Basic Quantifiers
+Pattern.compile("a*")     // 0 or more 'a'
+Pattern.compile("a+")     // 1 or more 'a'
+Pattern.compile("a?")     // 0 or 1 'a' (optional)
+Pattern.compile("a{3}")   // Exactly 3 'a'
+Pattern.compile("a{2,}")  // 2 or more 'a'
+Pattern.compile("a{2,5}") // Between 2 and 5 'a'
+
+Greedy vs Reluctant vs Possessive
+// GREEDY (default) - matches as much as possible
+Pattern.compile("a+")     // Greedy
+Pattern.compile(".*")     // Greedy (dangerous!)
+
+// RELUCTANT (lazy) - matches as little as possible
+Pattern.compile("a+?")    // Reluctant
+Pattern.compile(".*?")    // Reluctant
+
+// POSSESSIVE - like greedy but doesn't backtrack
+Pattern.compile("a++")    // Possessive
+Pattern.compile(".*+")    // Possessive
+
+Anchors and Boundaries
+Pattern.compile("^cat")    // Matches "cat" at start of string
+Pattern.compile("cat$")    // Matches "cat" at end of string
+Pattern.compile("^cat$")   // Matches exactly "cat" (entire string)
+
+Word Boundaries
+Pattern.compile("\\bcat\\b")   // Matches "cat" as whole word
+Pattern.compile("\\Bcat\\B")   // Matches "cat" NOT as whole word
+
+"{vc.##siteid##.testuser.#username#}"
