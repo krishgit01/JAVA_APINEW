@@ -1,0 +1,21 @@
+What is Factory Pattern?
+Factory Pattern is used to create objects without exposing the creation logic to the client.
+
+Instead of
+PaymentStrategy strategy = new CreditCardPayment();
+we do
+PaymentStrategy strategy = PaymentFactory.getPayment("CARD");
+
+So the client:
+❌ Doesn’t know which class is created
+✅ Just asks the factory
+
+🎯 Why Do We Need Factory?
+if (type.equals("CARD")) {
+    return new CreditCardPayment();
+} else if (type.equals("UPI")) {
+    return new UPIPayment();
+}
+
+If you write this everywhere → messy code.
+Factory centralizes object creation.
